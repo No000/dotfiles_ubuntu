@@ -652,9 +652,14 @@ properly disable mozc-mode."
   (define-key company-active-map (kbd "C-h") nil)
 
 
+
+  
   ;; ================================================================================
   ;; rustic
   ;; ================================================================================
+
+  ;; cargoのPATHの設定
+  (add-to-list 'exec-path (expand-file-name "~/.cargo/bin/"))
   (use-package rustic
 	:ensure t)
   ;; 本当にwithout switchしているわけではなく前のウィンドウにフォーカスを戻すだけ
@@ -1811,6 +1816,11 @@ middle"
                ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                ("\\paragraph{%s}" . "\\paragraph*{%s}")
                ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+
+;; PATHを拾う
+(when (require 'exec-path-from-shell nil t)
+  (exec-path-from-shell-initialize))
 
 
 
